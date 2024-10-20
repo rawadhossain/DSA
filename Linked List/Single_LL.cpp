@@ -1,4 +1,4 @@
-//From Strivers Linked List Playlist
+// From Strivers Linked List Playlist
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -92,9 +92,9 @@ Node *removeHead(Node *head)
     return head;
     */
 }
-    /* Node *head = convertArr2LL(arr);
-    head = removeHead(head);
-    printLL(head);*/
+/* Node *head = convertArr2LL(arr);
+head = removeHead(head);
+printLL(head);*/
 
 Node *removeTail(Node *head)
 {
@@ -109,9 +109,9 @@ Node *removeTail(Node *head)
     temp->next = nullptr;
     return head;
 }
-      /* Node *head = convertArr2LL(arr);
-      head = removeTail(head);
-      printLL(head);*/
+/* Node *head = convertArr2LL(arr);
+head = removeTail(head);
+printLL(head);*/
 
 Node *removeKelement(Node *head, int k)
 {
@@ -189,7 +189,7 @@ Node *insertTail(Node *head, int value)
     return head;
 }
 
-Node *insertPosition(Node *head, int value, int k) //insterting a value at position k
+Node *insertPosition(Node *head, int value, int k) // insterting a value at position k
 {
     if (head == NULL)
     {
@@ -215,7 +215,7 @@ Node *insertPosition(Node *head, int value, int k) //insterting a value at posit
     return head;
 }
 
-//inserting an element before the value in a LL
+// inserting an element before the value in a LL
 Node *insertElement_before_value(Node *head, int el, int value) // members of LL: value, newly added element: el
 {
     if (head == NULL)
@@ -239,8 +239,6 @@ Node *insertElement_before_value(Node *head, int el, int value) // members of LL
     }
     return head;
 }
-
-
 
 int main()
 {
