@@ -2,102 +2,133 @@
 
 using namespace std;
 
-class Node {
+class Node
+{
 public:
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
 
-    Node(int value) {
+    Node(int value)
+    {
         data = value;
-        left = nullptr;
-        right = nullptr;
+        left = NULL;
+        right = NULL;
     }
 };
 
-class BinarySearchTree {
+class BinarySearchTree
+{
 private:
-    Node* root;
+    Node *root;
 
 public:
-
-    BinarySearchTree() {
-        root = nullptr;
+    BinarySearchTree()
+    {
+        root = NULL;
     }
 
-    void insert(int value) {
+    void insert(int value)
+    {
         root = insertHelper(root, value);
     }
 
-    Node* insertHelper(Node* node, int value) {
-        if (node == nullptr) {
+    Node *insertHelper(Node *node, int value)
+    {
+        if (node == NULL)
+        {
             return new Node(value);
         }
 
-        if (value < node->data) {
+        if (value < node->data)
+        {
             node->left = insertHelper(node->left, value);
-        } else if (value > node->data) {
+        }
+        else if (value > node->data)
+        {
             node->right = insertHelper(node->right, value);
         }
 
         return node;
     }
 
-    bool search(int value) {
+    bool search(int value)
+    {
         return searchHelper(root, value);
     }
 
-    bool searchHelper(Node* node, int value) {
-        if (node == nullptr) {
+    bool searchHelper(Node *node, int value)
+    {
+        if (node == NULL)
+        {
             return false;
         }
 
-        if (value == node->data) {
+        if (value == node->data)
+        {
             return true;
-        } else if (value < node->data) {
+        }
+        else if (value < node->data)
+        {
             return searchHelper(node->left, value);
-        } else {
+        }
+        else
+        {
             return searchHelper(node->right, value);
         }
     }
 
-    void inorderTraversal() {
+    void inorderTraversal()
+    {
         inorderTraversalHelper(root);
     }
 
-    void inorderTraversalHelper(Node* node) {
-        if (node != nullptr) {
+    void inorderTraversalHelper(Node *node)
+    {
+        if (node != NULL)
+        {
             inorderTraversalHelper(node->left);
             cout << node->data << " ";
             inorderTraversalHelper(node->right);
         }
     }
 
-    void remove(int value) {
+    void remove(int value)
+    {
         root = removeHelper(root, value);
     }
 
-    Node* removeHelper(Node* node, int value) {
-        if (node == nullptr) {
+    Node *removeHelper(Node *node, int value)
+    {
+        if (node == NULL)
+        {
             return node;
         }
 
-        if (value < node->data) {
+        if (value < node->data)
+        {
             node->left = removeHelper(node->left, value);
-        } else if (value > node->data) {
+        }
+        else if (value > node->data)
+        {
             node->right = removeHelper(node->right, value);
-        } else {
-            if (node->left == nullptr) {
-                Node* temp = node->right;
+        }
+        else
+        {
+            if (node->left == NULL)
+            {
+                Node *temp = node->right;
                 delete node;
                 return temp;
-            } else if (node->right == nullptr) {
-                Node* temp = node->left;
+            }
+            else if (node->right == NULL)
+            {
+                Node *temp = node->left;
                 delete node;
                 return temp;
             }
 
-            Node* temp = getMinNode(node->right);
+            Node *temp = getMinNode(node->right);
             node->data = temp->data;
             node->right = removeHelper(node->right, temp->data);
         }
@@ -105,44 +136,55 @@ public:
         return node;
     }
 
-    Node* getMinNode(Node* node) {
-        Node* current = node;
-        while (current && current->left != nullptr) {
+    Node *getMinNode(Node *node)
+    {
+        Node *current = node;
+        while (current && current->left != NULL)
+        {
             current = current->left;
         }
         return current;
     }
 
-    int getMin() {
-        if (root == nullptr) {
+    int getMin()
+    {
+        if (root == NULL)
+        {
             throw runtime_error("Tree is empty");
         }
 
-        Node* current = root;
-        while (current->left != nullptr) {
+        Node *current = root;
+        while (current->left != NULL)
+        {
             current = current->left;
         }
         return current->data;
     }
 
-    int getMax() {
-        if (root == nullptr) {
+    int getMax()
+    {
+        if (root == NULL)
+        {
             throw runtime_error("Tree is empty");
         }
 
-        Node* current = root;
-        while (current->right != nullptr) {
+        Node *current = root;
+        while (current->right != NULL)
+        {
             current = current->right;
         }
         return current->data;
     }
 
-    int getHeight() {
+    int getHeight()
+    {
         return getHeightHelper(root);
     }
 
-    int getHeightHelper(Node* node) {
-        if (node == nullptr) {
+    int getHeightHelper(Node *node)
+    {
+        if (node == NULL)
+        {
             return 0;
         }
 
